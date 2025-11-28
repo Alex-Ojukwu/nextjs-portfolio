@@ -1,19 +1,10 @@
+// src/app/api/send/route.js
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
-
-export async function POST(req, res) {
-  if (!process.env.RESEND_API_KEY || !process.env.FROM_EMAIL) {
-    return NextResponse.json({
-      success: false,
-      message: "Email configuration missing",
-    });
-  }
-
+export async function POST(req) {
+  // dummy response, email functionality disabled
   return NextResponse.json({
     success: true,
-    message: "Email temporarily disabled",
+    message: "Email sending is currently disabled.",
   });
 }
