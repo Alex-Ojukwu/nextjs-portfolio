@@ -5,27 +5,15 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.FROM_EMAIL;
 
 export async function POST(req, res) {
-  const { email, subject, message } = await req.json();
-  
-  const resend = new Resend(process.env.RESEND_API_KEY); // inside function
-  const fromEmail = process.env.FROM_EMAIL;
-  
-  try {
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email],
-      subject,
-      react: (
-        <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
-          <p>{message}</p>
-        </>
-      ),
+  if (!process.env.RESEND_API_KEY || !process.env.FROM_EMAIL) {
+    return NextResponse.json({
+      success: false,
+      message: "Email configuration missing",
     });
-    return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json({ error });
   }
+
+  return NextResponse.json({
+    success: true,
+    message: "Email temporarily disabled",
+  });
 }
