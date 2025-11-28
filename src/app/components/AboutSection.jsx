@@ -11,10 +11,10 @@ const TAB_DATA = [
       <ul className="list-disc pl-2">
         <li>Node.js</li>
         <li>Express</li>
-        <li>PostgreSQL</li>
-        <li>Sequelize</li>
-        <li>JavaScript</li>
+        <li>PostgreSQL</li>      
+        <li>TypeScript</li>
         <li>React</li>
+        <li>NextJs</li>
       </ul>
     ),
   },
@@ -23,8 +23,8 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul className="list-disc pl-2">
-        <li>Fullstack Academy of Code</li>
-        <li>University of California, Santa Cruz</li>
+        <li>Secondary School: The Ambassadors college</li>
+        <li>Pan-Atlantic University</li>
       </ul>
     ),
   },
@@ -33,6 +33,8 @@ const TAB_DATA = [
     id: "certifications",
     content: (
       <ul className="list-disc pl-2">
+        <li>West African Senior School Certificate Examination (WASSCE), [2022]</li>
+        <li>International General Certificate of Secondary Education (IGCSE), Cambridge International (or Pearson Edexcel), [2022]</li>
         <li>AWS Cloud Practitioner</li>
         <li>Google Professional Cloud Developer</li>
       </ul>
@@ -59,9 +61,9 @@ const AboutSection = () => {
           <p className="text-base lg:text-lg">
             I am a full stack web developer with a passion for creating
             interactive and responsive web applications. I have experience
-            working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
-            Sequelize, HTML, CSS, and Git. I am a quick learner and I am always
-            looking to expand my knowledge and skill set. I am a team player and
+            working with JavaScript, React, NextJs, Node.js, Express, PostgreSQL,
+             HTML, SCSS, and Git. I am a quick learner and I am always
+            looking to expand my knowledge and skill set. I am also a team player and
             I am excited to work with others to create amazing applications.
           </p>
           <div className="flex flex-row justify-start mt-8">
