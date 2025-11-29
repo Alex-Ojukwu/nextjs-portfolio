@@ -34,11 +34,11 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "Food Ordering Application",
-    description: "Project 4 description",
-    image: "/images/projects/4.png",
+    title: "Doctor's Booking Application",
+    description: "This provides booking services for various hospitals",
+    image: "/images/projects/Image_Composition.jpeg",
     tag: ["All", "Mobile"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/Alex-Ojukwu/Doctor-Appointment",
     previewUrl: "/",
   },
   {
