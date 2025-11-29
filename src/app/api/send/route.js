@@ -14,19 +14,31 @@ export async function POST(req) {
       );
     }
 
-    // Create transporter with Gmail SMTP
+    // Debug: Log if environment variables exist (without showing actual values)
+    console.log("Environment variables check:", {
+      hasOutlookUser: !!process.env.OUTLOOK_USER,
+      hasOutlookPassword: !!process.env.OUTLOOK_PASSWORD,
+      hasRecipientEmail: !!process.env.RECIPIENT_EMAIL,
+    });
+
+    // Create transporter with Outlook SMTP
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp-mail.outlook.com",
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.GMAIL_USER, // Your Gmail address
-        pass: process.env.GMAIL_APP_PASSWORD, // Your Gmail App Password
+        user: process.env.OUTLOOK_USER,
+        pass: process.env.OUTLOOK_PASSWORD,
       },
+      tls: {
+        ciphers: 'SSLv3'
+      }
     });
 
     // Email options
     const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: process.env.RECIPIENT_EMAIL || process.env.GMAIL_USER, // Where to receive emails
+      from: process.env.OUTLOOK_USER,
+      to: process.env.RECIPIENT_EMAIL || process.env.OUTLOOK_USER,
       subject: subject,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
@@ -39,7 +51,7 @@ export async function POST(req) {
           </p>
         </div>
       `,
-      replyTo: email, // So you can reply directly to the sender
+      replyTo: email,
     };
 
     // Send email
