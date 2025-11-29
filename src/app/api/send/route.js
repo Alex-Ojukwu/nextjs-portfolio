@@ -22,23 +22,18 @@ export async function POST(req) {
     });
 
     // Create transporter with Outlook SMTP
-    const transporter = nodemailer.createTransport({
-      host: "smtp-mail.outlook.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.OUTLOOK_USER,
-        pass: process.env.OUTLOOK_PASSWORD,
-      },
-      tls: {
-        ciphers: 'SSLv3'
-      }
-    });
+ const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
 
     // Email options
     const mailOptions = {
-      from: process.env.OUTLOOK_USER,
-      to: process.env.RECIPIENT_EMAIL || process.env.OUTLOOK_USER,
+      from: process.env.GMAIL_USER,
+      to: process.env.RECIPIENT_EMAIL || process.env.GMAIL_USER,
       subject: subject,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
